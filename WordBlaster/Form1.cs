@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace WordBlaster
 {
-    public partial class Form1 : Form
+    public partial class WordBlasterForm : Form
     {
-        public Form1()
+        public WordBlasterForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("You pressed Enter!");
         }
     }
 }
