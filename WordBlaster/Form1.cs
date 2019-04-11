@@ -95,7 +95,7 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
-            NewLevel(3);
+            NewLevel(5);
             Lane1Play(cts1.Token);
             Lane2Play(cts2.Token);
             Lane3Play(cts3.Token);
@@ -123,7 +123,6 @@ namespace WordBlaster
                 }
                 if (i.Equals(759))
                 {
-                    IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
                     Font font = new Font("Arial", 10, FontStyle.Bold);
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                     this.Lane1Panel.Refresh();
@@ -155,7 +154,6 @@ namespace WordBlaster
                 }
                 if (i.Equals(759))
                 {
-                    IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
                     Font font = new Font("Arial", 10, FontStyle.Bold);
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                     this.Lane2Panel.Refresh();
@@ -187,7 +185,6 @@ namespace WordBlaster
                 }
                 if (i.Equals(759))
                 {
-                    IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
                     Font font = new Font("Arial", 10, FontStyle.Bold);
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                     this.Lane3Panel.Refresh();
@@ -220,7 +217,6 @@ namespace WordBlaster
                 }
                 if (i.Equals(759))
                 {
-                    IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
                     Font font = new Font("Arial", 10, FontStyle.Bold);
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                     this.Lane4Panel.Refresh();
@@ -253,7 +249,6 @@ namespace WordBlaster
                 }
                 if (i.Equals(759))
                 {
-                    IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
                     Font font = new Font("Arial", 10, FontStyle.Bold);
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                     this.Lane5Panel.Refresh();

@@ -32,7 +32,17 @@ namespace WordBlaster.AbstractFactory
             }
             else
             {
-                return null;
+                try
+                {
+                    var x = Activator.CreateInstance(null, "WordBlaster.AbstractFactory.DynamicLevel");
+                    FactoryIF dynlvl = (FactoryIF)x.Unwrap();
+                    return dynlvl;
+                }
+                catch(System.TypeLoadException e)
+                {
+                    Console.WriteLine("Could not load file, starting normally...");
+                    return new LevelOneFactory(); //if we could not load it in just start normally
+                }
             }
         }
     }
