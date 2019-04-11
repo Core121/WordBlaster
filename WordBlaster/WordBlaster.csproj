@@ -46,6 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractFactory\FactoryProducer.cs" />
+    <Compile Include="AbstractFactory\LevelFiveFactory.cs" />
+    <Compile Include="AbstractFactory\LevelTwoFactory.cs" />
+    <Compile Include="AbstractFactory\LevelFourFactory.cs" />
+    <Compile Include="AbstractFactory\LevelThreeFactory.cs" />
+    <Compile Include="AbstractFactory\LevelOneFactory.cs" />
+    <Compile Include="Libraries\LevelFiveLibrary.cs" />
+    <Compile Include="Libraries\LevelFourLibrary.cs" />
+    <Compile Include="Libraries\LevelOneLibrary.cs" />
+    <Compile Include="Libraries\LevelThreeLibrary.cs" />
+    <Compile Include="Libraries\LevelTwoLibrary.cs" />
+    <Compile Include="Shapes\Bats.cs" />
+    <Compile Include="Shapes\Circle.cs" />
+    <Compile Include="Shapes\Diamond.cs" />
+    <Compile Include="AbstractFactory\FactoryIF.cs" />
+    <Compile Include="Shapes\GameShapesIF.cs" />
+    <Compile Include="Libraries\LibrariesIF.cs" />
+    <Compile Include="Shapes\Square.cs" />
+    <Compile Include="Shapes\Triangle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,7 +99,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Res\scrabble_hVA_icon.ico" />
+    <Content Include="Images\scrabble_hVA_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

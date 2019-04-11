@@ -40,6 +40,7 @@
             this.IntLevelLabel = new System.Windows.Forms.Label();
             this.InputTextBox = new System.Windows.Forms.TextBox();
             this.EnterButton = new System.Windows.Forms.Button();
+            this.StartGamebutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lane1Panel
@@ -49,6 +50,7 @@
             this.Lane1Panel.Name = "Lane1Panel";
             this.Lane1Panel.Size = new System.Drawing.Size(1017, 97);
             this.Lane1Panel.TabIndex = 0;
+            this.Lane1Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Lane1Panel_Paint);
             // 
             // Lane2Panel
             // 
@@ -143,6 +145,18 @@
             this.EnterButton.UseVisualStyleBackColor = false;
             this.EnterButton.Click += new System.EventHandler(this.EnterButton_Click);
             // 
+            // StartGamebutton
+            // 
+            this.StartGamebutton.BackColor = System.Drawing.SystemColors.Info;
+            this.StartGamebutton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartGamebutton.Location = new System.Drawing.Point(1081, 386);
+            this.StartGamebutton.Name = "StartGamebutton";
+            this.StartGamebutton.Size = new System.Drawing.Size(94, 48);
+            this.StartGamebutton.TabIndex = 9;
+            this.StartGamebutton.Text = "Start Game";
+            this.StartGamebutton.UseVisualStyleBackColor = false;
+            this.StartGamebutton.Click += new System.EventHandler(this.StartGamebutton_Click);
+            // 
             // WordBlasterForm
             // 
             this.AcceptButton = this.EnterButton;
@@ -150,6 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1226, 661);
+            this.Controls.Add(this.StartGamebutton);
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.InputTextBox);
             this.Controls.Add(this.IntLevelLabel);
@@ -162,11 +177,12 @@
             this.Controls.Add(this.Lane2Panel);
             this.Controls.Add(this.Lane1Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1244, 708);
             this.Name = "WordBlasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Word Blaster";
+            this.Load += new System.EventHandler(this.WordBlasterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,6 +201,7 @@
         private System.Windows.Forms.Label IntLevelLabel;
         private System.Windows.Forms.TextBox InputTextBox;
         private System.Windows.Forms.Button EnterButton;
+        private System.Windows.Forms.Button StartGamebutton;
     }
 }
 
