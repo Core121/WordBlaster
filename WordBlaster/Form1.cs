@@ -89,7 +89,7 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
-            NewLevel(5);
+            NewLevel(1);
             Lane1Play(cts1.Token);
             Lane2Play(cts2.Token);
             Lane3Play(cts3.Token);
