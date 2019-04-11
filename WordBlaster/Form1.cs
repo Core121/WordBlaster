@@ -262,13 +262,13 @@ namespace WordBlaster
 
         private void NewLevel(int level)
         {
-            this.level = level;
             levelFactory = FactoryProducer.getFactory(level); //Get the factory for the level
             library = levelFactory.createLibrary(); //Creates Library Associated with LevelLibrary
             String word = library.generateWord(); //Generates a word from LevelLibrary
             shape = levelFactory.createShape(); //Creates the Shape and color of shape for level
             delaytime = levelFactory.getDelay();
-            IntLevelLabel.Text = level.ToString();
+            this.level = levelFactory.getLevel(); //Only needed for if dynamic linkage doesnt work, makes sure to get the true level
+            IntLevelLabel.Text = this.level.ToString();
         }
 
         private void checkIfLost()
