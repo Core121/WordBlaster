@@ -176,6 +176,7 @@
             this.Controls.Add(this.Lane3Panel);
             this.Controls.Add(this.Lane2Panel);
             this.Controls.Add(this.Lane1Panel);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1244, 708);

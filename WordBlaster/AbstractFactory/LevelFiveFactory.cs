@@ -23,5 +23,14 @@ namespace WordBlaster.AbstractFactory
             GameShapesIF shape = (GameShapesIF)x.Unwrap();
             return shape;
         }
+        public int getLevel()
+        {
+            return 5;
+        }
+
+        public int getDelay()
+        {
+            return 1;
+        }
     }
 }

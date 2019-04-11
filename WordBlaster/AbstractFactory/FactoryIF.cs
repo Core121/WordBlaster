@@ -12,5 +12,7 @@ namespace WordBlaster.AbstractFactory
     {
         GameShapesIF createShape();
         LibrariesIF createLibrary();
+        int getLevel();
+        int getDelay();
     }
 }

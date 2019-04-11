@@ -17,17 +17,18 @@ namespace WordBlaster
     public partial class WordBlasterForm : Form
     {
         //Will be the same for each lane
-        FactoryIF levelFactory;
-        Int32 level;
-        LibrariesIF library;
-        GameShapesIF shape;
-        Int32 delaytime;
-        String[] words = new String[5];
-        CancellationTokenSource cts1 = new CancellationTokenSource();
-        CancellationTokenSource cts2 = new CancellationTokenSource();
-        CancellationTokenSource cts3 = new CancellationTokenSource();
-        CancellationTokenSource cts4 = new CancellationTokenSource();
-        CancellationTokenSource cts5 = new CancellationTokenSource();
+        private FactoryIF levelFactory;
+        private Int32 level;
+        private LibrariesIF library;
+        private GameShapesIF shape;
+        private Int32 delaytime;
+        private String[] words = new String[5];
+        private CancellationTokenSource cts1 = new CancellationTokenSource();
+        private CancellationTokenSource cts2 = new CancellationTokenSource();
+        private CancellationTokenSource cts3 = new CancellationTokenSource();
+        private CancellationTokenSource cts4 = new CancellationTokenSource();
+        private CancellationTokenSource cts5 = new CancellationTokenSource();
+
         public WordBlasterForm()
         {
             InitializeComponent();
@@ -38,11 +39,12 @@ namespace WordBlaster
 
         }
 
-        private void EnterButton_Click(object sender, EventArgs e)
+        private async void EnterButton_Click(object sender, EventArgs e)
         {
             if (InputTextBox.Text.Equals(words[0]))
             {
                 cts1.Cancel();
+                await Task.Delay(1); //makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
                 cts1 = new CancellationTokenSource();
                 Lane1Play(cts1.Token);
@@ -51,6 +53,7 @@ namespace WordBlaster
             else if (InputTextBox.Text.Equals(words[1]))
             {
                 cts2.Cancel();
+                await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
                 cts2 = new CancellationTokenSource();
                 Lane2Play(cts2.Token);
@@ -59,6 +62,7 @@ namespace WordBlaster
             else if (InputTextBox.Text.Equals(words[2]))
             {
                 cts3.Cancel();
+                await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
                 cts3 = new CancellationTokenSource();
                 Lane3Play(cts3.Token);
@@ -67,6 +71,7 @@ namespace WordBlaster
             else if (InputTextBox.Text.Equals(words[3]))
             {
                 cts4.Cancel();
+                await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
                 cts4 = new CancellationTokenSource();
                 Lane4Play(cts4.Token);
@@ -75,6 +80,7 @@ namespace WordBlaster
             else if (InputTextBox.Text.Equals(words[4]))
             {
                 cts5.Cancel();
+                await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
                 cts5 = new CancellationTokenSource();
                 Lane5Play(cts5.Token);
@@ -89,7 +95,7 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
-            NewLevel(1);
+            NewLevel(3);
             Lane1Play(cts1.Token);
             Lane2Play(cts2.Token);
             Lane3Play(cts3.Token);
@@ -118,10 +124,15 @@ namespace WordBlaster
                 if (i.Equals(759))
                 {
                     IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
+                    Font font = new Font("Arial", 10, FontStyle.Bold);
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    this.Lane1Panel.Refresh();
+                    Graphics dc = Lane1Panel.CreateGraphics();
+                    dc.DrawString("LANE ENDED.", font, myBrush, new Point(340, 30));
+                    words[0] = null;
+                    this.checkIfLost();
                 }
             }
-            words[0] = null;
-            this.checkIfLost();
         }
 
         private async void Lane2Play(CancellationToken token)
@@ -145,10 +156,15 @@ namespace WordBlaster
                 if (i.Equals(759))
                 {
                     IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
+                    Font font = new Font("Arial", 10, FontStyle.Bold);
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    this.Lane2Panel.Refresh();
+                    Graphics dc = Lane2Panel.CreateGraphics();
+                    dc.DrawString("LANE ENDED.", font, myBrush, new Point(340, 30));
+                    words[1] = null;
+                    this.checkIfLost();
                 }
             }
-            words[1] = null;
-            this.checkIfLost();
         }
 
         private async void Lane3Play(CancellationToken token)
@@ -172,10 +188,15 @@ namespace WordBlaster
                 if (i.Equals(759))
                 {
                     IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
+                    Font font = new Font("Arial", 10, FontStyle.Bold);
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    this.Lane3Panel.Refresh();
+                    Graphics dc = Lane3Panel.CreateGraphics();
+                    dc.DrawString("LANE ENDED.", font, myBrush, new Point(340, 30));
+                    words[2] = null;
+                    this.checkIfLost();
                 }
             }
-            words[2] = null;
-            this.checkIfLost();
         }
 
         private async void Lane4Play(CancellationToken token)
@@ -200,10 +221,15 @@ namespace WordBlaster
                 if (i.Equals(759))
                 {
                     IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
+                    Font font = new Font("Arial", 10, FontStyle.Bold);
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    this.Lane4Panel.Refresh();
+                    Graphics dc = Lane4Panel.CreateGraphics();
+                    dc.DrawString("LANE ENDED.", font, myBrush, new Point(340, 30));
+                    words[3] = null;
+                    this.checkIfLost();
                 }
             }
-            words[3] = null;
-            this.checkIfLost();
         }
 
         private async void Lane5Play(CancellationToken token)
@@ -220,7 +246,7 @@ namespace WordBlaster
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
-                catch (Exception e)
+                catch (OperationCanceledException e)
                 {
                     words[4] = null;
                     break; //break here because task won't end for a while if you exit the application before finishing
@@ -228,10 +254,15 @@ namespace WordBlaster
                 if (i.Equals(759))
                 {
                     IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) - level).ToString();
+                    Font font = new Font("Arial", 10, FontStyle.Bold);
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    this.Lane5Panel.Refresh();
+                    Graphics dc = Lane5Panel.CreateGraphics();
+                    dc.DrawString("LANE ENDED.", font, myBrush, new Point(340, 30));
+                    words[4] = null;
+                    this.checkIfLost();
                 }
             }
-            words[4] = null;
-            this.checkIfLost();
         }
 
         private void NewLevel(int level)
@@ -241,34 +272,19 @@ namespace WordBlaster
             library = levelFactory.createLibrary(); //Creates Library Associated with LevelLibrary
             String word = library.generateWord(); //Generates a word from LevelLibrary
             shape = levelFactory.createShape(); //Creates the Shape and color of shape for level
+            delaytime = levelFactory.getDelay();
             IntLevelLabel.Text = level.ToString();
-            switch (level)
-            {
-                case 1:
-                    delaytime = 35;
-                    break;
-                case 2:
-                    delaytime = 20;
-                    break;
-                case 3:
-                    delaytime = 10;
-                    break;
-                case 4:
-                    delaytime = 5;
-                    break;
-                case 5:
-                    delaytime = 1;
-                    break;
-            }
         }
 
         private void checkIfLost()
         {
             if(words[0] == (null) && words[1] == (null) && words[2]==(null) && words[3]==(null) && words[4]==(null))
             {
-                Console.WriteLine("You lost!!");
+                MessageBox.Show("You lost!\nScore: " + this.IntScoreLabel.Text + "\nLevel: " + IntLevelLabel.Text);
+                StartGamebutton.Enabled = true;
             }
         }
+
         private void WordBlasterForm_Load(object sender, EventArgs e)
         {
 

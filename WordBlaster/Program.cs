@@ -14,9 +14,16 @@ namespace WordBlaster
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WordBlasterForm());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new WordBlasterForm());
+            }
+            catch(System.Reflection.TargetInvocationException e) //when user exits during runtime
+            {
+
+            }
         }
     }
 }
