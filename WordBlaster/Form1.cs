@@ -95,6 +95,7 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
+            this.IntScoreLabel.Text = "0";
             NewLevel(5);
             Lane1Play(cts1.Token);
             Lane2Play(cts2.Token);
@@ -262,7 +263,8 @@ namespace WordBlaster
 
         private void NewLevel(int level)
         {
-            levelFactory = FactoryProducer.getFactory(level); //Get the factory for the level
+            FactoryProducer factoryProducer = new FactoryProducer();
+            levelFactory = factoryProducer.getFactory(level); //Get the factory for the level
             library = levelFactory.createLibrary(); //Creates Library Associated with LevelLibrary
             String word = library.generateWord(); //Generates a word from LevelLibrary
             shape = levelFactory.createShape(); //Creates the Shape and color of shape for level

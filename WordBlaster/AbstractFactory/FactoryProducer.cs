@@ -8,7 +8,7 @@ namespace WordBlaster.AbstractFactory
 {
     class FactoryProducer
     {
-        public static FactoryIF getFactory(int level)
+        public FactoryIF getFactory(int level)
         {
             if (level.Equals(1))
             {
