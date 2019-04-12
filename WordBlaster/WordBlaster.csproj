@@ -57,6 +57,9 @@
     <Compile Include="Libraries\LevelOneLibrary.cs" />
     <Compile Include="Libraries\LevelThreeLibrary.cs" />
     <Compile Include="Libraries\LevelTwoLibrary.cs" />
+    <Compile Include="Observer\ObservableIF.cs" />
+    <Compile Include="Observer\ObserverIF.cs" />
+    <Compile Include="Observer\ScoreObserver.cs" />
     <Compile Include="Shapes\Bats.cs" />
     <Compile Include="Shapes\Circle.cs" />
     <Compile Include="Shapes\Diamond.cs" />

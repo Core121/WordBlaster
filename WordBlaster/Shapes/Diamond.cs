@@ -13,7 +13,7 @@ namespace WordBlaster.Shapes
         public void DrawShape(Graphics g, int x, String word)
         {
             // Create a new pen.
-            Pen pen = new Pen(Color.Beige, 1);
+            Pen pen = new Pen(Color.DarkSalmon, 1);
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             g.DrawEllipse(pen, new Rectangle(x, 0, 75, 75));
             g.DrawString(word, font, myBrush, new PointF(x + 20, 32));

@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WordBlaster.AbstractFactory;
 using WordBlaster.Libraries;
+using WordBlaster.Observer;
 using WordBlaster.Shapes;
 
 namespace WordBlaster
 {
-    public partial class WordBlasterForm : Form
+    public partial class WordBlasterForm : Form, ObservableIF
     {
         //Will be the same for each lane
         private FactoryIF levelFactory;
@@ -23,11 +24,8 @@ namespace WordBlaster
         private GameShapesIF shape;
         private Int32 delaytime;
         private String[] words = new String[5];
-        private CancellationTokenSource cts1 = new CancellationTokenSource();
-        private CancellationTokenSource cts2 = new CancellationTokenSource();
-        private CancellationTokenSource cts3 = new CancellationTokenSource();
-        private CancellationTokenSource cts4 = new CancellationTokenSource();
-        private CancellationTokenSource cts5 = new CancellationTokenSource();
+        private CancellationTokenSource[] cts = new CancellationTokenSource[5];
+        private List<ObserverIF> observers = new List<ObserverIF>();
 
         public WordBlasterForm()
         {
@@ -43,49 +41,50 @@ namespace WordBlaster
         {
             if (InputTextBox.Text.Equals(words[0]))
             {
-                cts1.Cancel();
+                cts[0].Cancel();
                 await Task.Delay(1); //makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
-                cts1 = new CancellationTokenSource();
-                Lane1Play(cts1.Token);
+                cts[0] = new CancellationTokenSource();
+                Lane1Play(cts.ElementAt(0).Token);
                 InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[1]))
             {
-                cts2.Cancel();
+                cts[1].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
-                cts2 = new CancellationTokenSource();
-                Lane2Play(cts2.Token);
+                cts[1] = new CancellationTokenSource();
+                Lane2Play(cts[1].Token);
                 InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[2]))
             {
-                cts3.Cancel();
+                cts[2].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
-                cts3 = new CancellationTokenSource();
-                Lane3Play(cts3.Token);
+                cts[2] = new CancellationTokenSource();
+                Lane3Play(cts[2].Token);
                 InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[3]))
             {
-                cts4.Cancel();
+                cts[3].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
-                cts4 = new CancellationTokenSource();
-                Lane4Play(cts4.Token);
+                cts[3] = new CancellationTokenSource();
+                Lane4Play(cts[3].Token);
                 InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[4]))
             {
-                cts5.Cancel();
+                cts[4].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
-                cts5 = new CancellationTokenSource();
-                Lane5Play(cts5.Token);
+                cts[4] = new CancellationTokenSource();
+                Lane5Play(cts[4].Token);
                 InputTextBox.Text = "";
             }
+            this.checkScore(); //Check to see if it's time to go to the next level
         }
 
         private void Lane1Panel_Paint(object sender, PaintEventArgs e)
@@ -96,12 +95,12 @@ namespace WordBlaster
         {
             StartGamebutton.Enabled= false;
             this.IntScoreLabel.Text = "0";
-            NewLevel(5);
-            Lane1Play(cts1.Token);
-            Lane2Play(cts2.Token);
-            Lane3Play(cts3.Token);
-            Lane4Play(cts4.Token);
-            Lane5Play(cts5.Token);
+            NewLevel(1);
+            Lane1Play(cts[0].Token);
+            Lane2Play(cts[1].Token);
+            Lane3Play(cts[2].Token);
+            Lane4Play(cts[3].Token);
+            Lane5Play(cts[4].Token);
         }
 
         private async void Lane1Play(CancellationToken token)
@@ -261,7 +260,7 @@ namespace WordBlaster
             }
         }
 
-        private void NewLevel(int level)
+        public void NewLevel(int level)
         {
             FactoryProducer factoryProducer = new FactoryProducer();
             levelFactory = factoryProducer.getFactory(level); //Get the factory for the level
@@ -284,7 +283,76 @@ namespace WordBlaster
 
         private void WordBlasterForm_Load(object sender, EventArgs e)
         {
+            cts[0] = (new CancellationTokenSource());
+            cts[1] = (new CancellationTokenSource());
+            cts[2] = (new CancellationTokenSource());
+            cts[3] = (new CancellationTokenSource());
+            cts[4] = (new CancellationTokenSource());
+            observers.Add(new ScoreObserver());
+        }
 
+        public async void stopAllTasks()
+        {
+            for(int i = 0; i < cts.Count(); i++)
+            {
+                cts[i].Cancel();
+            }
+            await Task.Delay(5);
+            for (int i = 0; i < cts.Count(); i++)
+            {
+                cts[i] = new CancellationTokenSource();
+            }
+            Lane1Play(cts[0].Token);
+            Lane2Play(cts[1].Token);
+            Lane3Play(cts[2].Token);
+            Lane4Play(cts[3].Token);
+            Lane5Play(cts[4].Token);
+        }
+        public int getLevel()
+        {
+            return this.level;
+        }
+
+        public void addObserver(ObserverIF observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void removeObserver(ObserverIF observer)
+        {
+            observers.Remove(observer);
+        }
+
+        private void checkScore()
+        {
+            if(level.Equals(1) && Convert.ToInt32(IntScoreLabel.Text) >= 20)
+            {
+                for(int i = 0; i < observers.Count(); i++)
+                {
+                    observers.ElementAt(i).notify(this);
+                }
+            }
+            else if (level.Equals(2) && Convert.ToInt32(IntScoreLabel.Text) >= 40)
+            {
+                for (int i = 0; i < observers.Count(); i++)
+                {
+                    observers.ElementAt(i).notify(this);
+                }
+            }
+            else if (level.Equals(3) && Convert.ToInt32(IntScoreLabel.Text) >= 80)
+            {
+                for (int i = 0; i < observers.Count(); i++)
+                {
+                    observers.ElementAt(i).notify(this);
+                }
+            }
+            else if (level.Equals(4) && Convert.ToInt32(IntScoreLabel.Text) >= 100)
+            {
+                for (int i = 0; i < observers.Count(); i++)
+                {
+                    observers.ElementAt(i).notify(this);
+                }
+            }
         }
     }
 }
