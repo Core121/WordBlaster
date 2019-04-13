@@ -96,6 +96,8 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
+            RemoveLettercheckBox.Enabled = false;
+            ReverseWordcheckBox.Enabled = false;
             this.IntScoreLabel.Text = "0";
             NewLevel(1);
             Lane1Play(cts[0].Token);
@@ -284,6 +286,8 @@ namespace WordBlaster
             {
                 MessageBox.Show("You lost!\nScore: " + this.IntScoreLabel.Text + "\nLevel: " + IntLevelLabel.Text);
                 StartGamebutton.Enabled = true;
+                ReverseWordcheckBox.Enabled = true;
+                RemoveLettercheckBox.Enabled = true;
             }
         }
 
