@@ -332,21 +332,21 @@ namespace WordBlaster
                     observers.ElementAt(i).notify(this);
                 }
             }
-            else if (level.Equals(2) && Convert.ToInt32(IntScoreLabel.Text) >= 40)
+            else if (level.Equals(2) && Convert.ToInt32(IntScoreLabel.Text) >= 100)
             {
                 for (int i = 0; i < observers.Count(); i++)
                 {
                     observers.ElementAt(i).notify(this);
                 }
             }
-            else if (level.Equals(3) && Convert.ToInt32(IntScoreLabel.Text) >= 80)
+            else if (level.Equals(3) && Convert.ToInt32(IntScoreLabel.Text) >= 200)
             {
                 for (int i = 0; i < observers.Count(); i++)
                 {
                     observers.ElementAt(i).notify(this);
                 }
             }
-            else if (level.Equals(4) && Convert.ToInt32(IntScoreLabel.Text) >= 100)
+            else if (level.Equals(4) && Convert.ToInt32(IntScoreLabel.Text) >= 320)
             {
                 for (int i = 0; i < observers.Count(); i++)
                 {
