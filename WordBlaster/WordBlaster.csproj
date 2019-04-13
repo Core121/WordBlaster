@@ -52,6 +52,9 @@
     <Compile Include="AbstractFactory\LevelFourFactory.cs" />
     <Compile Include="AbstractFactory\LevelThreeFactory.cs" />
     <Compile Include="AbstractFactory\LevelOneFactory.cs" />
+    <Compile Include="Filter\FilterIF.cs" />
+    <Compile Include="Filter\RandomFilter.cs" />
+    <Compile Include="Filter\ReverseFilter.cs" />
     <Compile Include="Libraries\LevelFiveLibrary.cs" />
     <Compile Include="Libraries\LevelFourLibrary.cs" />
     <Compile Include="Libraries\LevelOneLibrary.cs" />

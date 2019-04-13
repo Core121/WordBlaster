@@ -41,6 +41,8 @@
             this.InputTextBox = new System.Windows.Forms.TextBox();
             this.EnterButton = new System.Windows.Forms.Button();
             this.StartGamebutton = new System.Windows.Forms.Button();
+            this.RemoveLettercheckBox = new System.Windows.Forms.CheckBox();
+            this.ReverseWordcheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Lane1Panel
@@ -157,6 +159,30 @@
             this.StartGamebutton.UseVisualStyleBackColor = false;
             this.StartGamebutton.Click += new System.EventHandler(this.StartGamebutton_Click);
             // 
+            // RemoveLettercheckBox
+            // 
+            this.RemoveLettercheckBox.AutoSize = true;
+            this.RemoveLettercheckBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveLettercheckBox.Location = new System.Drawing.Point(1081, 500);
+            this.RemoveLettercheckBox.Name = "RemoveLettercheckBox";
+            this.RemoveLettercheckBox.Size = new System.Drawing.Size(128, 20);
+            this.RemoveLettercheckBox.TabIndex = 10;
+            this.RemoveLettercheckBox.Text = "Remove Letter";
+            this.RemoveLettercheckBox.UseVisualStyleBackColor = true;
+            this.RemoveLettercheckBox.CheckedChanged += new System.EventHandler(this.RemoveLettercheckBox_CheckedChanged);
+            // 
+            // ReverseWordcheckBox
+            // 
+            this.ReverseWordcheckBox.AutoSize = true;
+            this.ReverseWordcheckBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReverseWordcheckBox.Location = new System.Drawing.Point(1081, 528);
+            this.ReverseWordcheckBox.Name = "ReverseWordcheckBox";
+            this.ReverseWordcheckBox.Size = new System.Drawing.Size(126, 20);
+            this.ReverseWordcheckBox.TabIndex = 11;
+            this.ReverseWordcheckBox.Text = "Reverse Word";
+            this.ReverseWordcheckBox.UseVisualStyleBackColor = true;
+            this.ReverseWordcheckBox.CheckedChanged += new System.EventHandler(this.ReverseWordcheckBox_CheckedChanged);
+            // 
             // WordBlasterForm
             // 
             this.AcceptButton = this.EnterButton;
@@ -164,6 +190,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1226, 661);
+            this.Controls.Add(this.ReverseWordcheckBox);
+            this.Controls.Add(this.RemoveLettercheckBox);
             this.Controls.Add(this.StartGamebutton);
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.InputTextBox);
@@ -203,6 +231,8 @@
         private System.Windows.Forms.TextBox InputTextBox;
         private System.Windows.Forms.Button EnterButton;
         private System.Windows.Forms.Button StartGamebutton;
+        private System.Windows.Forms.CheckBox RemoveLettercheckBox;
+        private System.Windows.Forms.CheckBox ReverseWordcheckBox;
     }
 }
 

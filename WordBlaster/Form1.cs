@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WordBlaster.AbstractFactory;
+using WordBlaster.Filter;
 using WordBlaster.Libraries;
 using WordBlaster.Observer;
 using WordBlaster.Shapes;
@@ -26,6 +27,7 @@ namespace WordBlaster
         private String[] words = new String[5];
         private CancellationTokenSource[] cts = new CancellationTokenSource[5];
         private List<ObserverIF> observers = new List<ObserverIF>();
+        private FilterIF[] filters = new FilterIF[2];
 
         public WordBlasterForm()
         {
@@ -43,7 +45,7 @@ namespace WordBlaster
             {
                 cts[0].Cancel();
                 await Task.Delay(1); //makes sure the task has time to end before another is started, fixes null word issue
-                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
+                IncrementScore();
                 cts[0] = new CancellationTokenSource();
                 Lane1Play(cts.ElementAt(0).Token);
                 InputTextBox.Text = "";
@@ -52,7 +54,7 @@ namespace WordBlaster
             {
                 cts[1].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
-                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
+                IncrementScore();
                 cts[1] = new CancellationTokenSource();
                 Lane2Play(cts[1].Token);
                 InputTextBox.Text = "";
@@ -61,7 +63,7 @@ namespace WordBlaster
             {
                 cts[2].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
-                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
+                IncrementScore();
                 cts[2] = new CancellationTokenSource();
                 Lane3Play(cts[2].Token);
                 InputTextBox.Text = "";
@@ -70,7 +72,7 @@ namespace WordBlaster
             {
                 cts[3].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
-                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
+                IncrementScore();
                 cts[3] = new CancellationTokenSource();
                 Lane4Play(cts[3].Token);
                 InputTextBox.Text = "";
@@ -79,7 +81,7 @@ namespace WordBlaster
             {
                 cts[4].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
-                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
+                IncrementScore();
                 cts[4] = new CancellationTokenSource();
                 Lane5Play(cts[4].Token);
                 InputTextBox.Text = "";
@@ -101,18 +103,20 @@ namespace WordBlaster
             Lane3Play(cts[2].Token);
             Lane4Play(cts[3].Token);
             Lane5Play(cts[4].Token);
+            InputTextBox.Focus();
         }
 
         private async void Lane1Play(CancellationToken token)
         {
             words[0] = library.generateWord(); //Generates a word from the Library
+            String data = this.filterProcessor(words[0]);
             for (int i = 0; i < 760; i++)
             {
                 try
                 {
                     Lane1Panel.Refresh();
                     Graphics dc = Lane1Panel.CreateGraphics();
-                    shape.DrawShape(dc, i, words[0]);
+                    shape.DrawShape(dc, i, data);
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
@@ -137,13 +141,14 @@ namespace WordBlaster
         private async void Lane2Play(CancellationToken token)
         {
             words[1] = library.generateWord(); //Generates a word from the Library
+            String data = this.filterProcessor(words[1]);
             for (int i = 0; i < 760; i++)
             {
                 try
                 {
                     Lane2Panel.Refresh();
                     Graphics dc = Lane2Panel.CreateGraphics();
-                    shape.DrawShape(dc, i, words[1]);
+                    shape.DrawShape(dc, i, data);
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
@@ -168,13 +173,14 @@ namespace WordBlaster
         private async void Lane3Play(CancellationToken token)
         {
             words[2] = library.generateWord(); //Generates a word from the Library
+            String data = this.filterProcessor(words[2]);
             for (int i = 0; i < 760; i++)
             {
                 try
                 {
                     Lane3Panel.Refresh();
                     Graphics dc = Lane3Panel.CreateGraphics();
-                    shape.DrawShape(dc, i, words[2]);
+                    shape.DrawShape(dc, i, data);
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
@@ -199,14 +205,14 @@ namespace WordBlaster
         private async void Lane4Play(CancellationToken token)
         {
             words[3] = library.generateWord(); //Generates a word from the Library
-            CancellationTokenSource cts = new CancellationTokenSource();
+            String data = this.filterProcessor(words[3]);
             for (int i = 0; i < 760; i++)
             {
                 try
                 {
                     Lane4Panel.Refresh();
                     Graphics dc = Lane4Panel.CreateGraphics();
-                    shape.DrawShape(dc, i, words[3]);
+                    shape.DrawShape(dc, i, data);
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
@@ -231,14 +237,14 @@ namespace WordBlaster
         private async void Lane5Play(CancellationToken token)
         {
             words[4] = library.generateWord(); //Generates a word from the Library
-            CancellationTokenSource cts = new CancellationTokenSource();
+            String data = this.filterProcessor(words[4]);
             for (int i = 0; i < 760; i++)
             {
                 try
                 {
                     Lane5Panel.Refresh();
                     Graphics dc = Lane5Panel.CreateGraphics();
-                    shape.DrawShape(dc, i, words[4]);
+                    shape.DrawShape(dc, i, data);
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
@@ -291,39 +297,40 @@ namespace WordBlaster
             observers.Add(new ScoreObserver());
         }
 
-        public async void stopAllTasks()
+        public async void stopAllTasks() //Stops all the lanes and restarts them
         {
             for(int i = 0; i < cts.Count(); i++)
             {
                 cts[i].Cancel();
             }
-            await Task.Delay(5);
+            await Task.Delay(5); //Awaits for all lanes to cancel
             for (int i = 0; i < cts.Count(); i++)
             {
-                cts[i] = new CancellationTokenSource();
+                cts[i] = new CancellationTokenSource(); //create all new cancellation tokens
             }
-            Lane1Play(cts[0].Token);
+            Lane1Play(cts[0].Token); //restart all lanes
             Lane2Play(cts[1].Token);
             Lane3Play(cts[2].Token);
             Lane4Play(cts[3].Token);
             Lane5Play(cts[4].Token);
         }
-        public int getLevel()
+
+        public int getLevel() //returns the current level
         {
             return this.level;
         }
 
-        public void addObserver(ObserverIF observer)
+        public void addObserver(ObserverIF observer) //adds on observer to the observer list
         {
             observers.Add(observer);
         }
 
-        public void removeObserver(ObserverIF observer)
+        public void removeObserver(ObserverIF observer) //removes an observer from the observer list
         {
             observers.Remove(observer);
         }
 
-        private void checkScore()
+        private void checkScore() //The levels are determined by the below checks, the observers will be notified upon level change
         {
             if(level.Equals(1) && Convert.ToInt32(IntScoreLabel.Text) >= 20)
             {
@@ -352,6 +359,64 @@ namespace WordBlaster
                 {
                     observers.ElementAt(i).notify(this);
                 }
+            }
+        }
+
+        private void RemoveLettercheckBox_CheckedChanged(object sender, EventArgs e) //To add or remove the filter from the array
+        {
+            if (RemoveLettercheckBox.Checked == true)
+            {
+                RandomFilter Randfilt = new RandomFilter();
+                filters[0] = Randfilt;
+            }
+            else
+            {
+                for (int i = 0; i < filters.Count(); i++)
+                {
+                    filters[0] = null;
+                }
+            }
+        }
+
+        private void ReverseWordcheckBox_CheckedChanged(object sender, EventArgs e) //To add or remove the filter from the array
+        {
+            ReverseFilter Revfilt = new ReverseFilter(); ;
+            if (ReverseWordcheckBox.Checked == true)
+            {
+                filters[1] = Revfilt;
+            }
+            else
+            {
+                filters[1] = null;
+            }
+        }
+
+
+        private string filterProcessor(String data) //Goes through and see if there are any filters in the array, if there are filter out the data
+        {
+            for(int i = 0; i < filters.Count(); i++)
+            {
+                if (filters[i] != null)
+                {
+                    data = filters[i].Filter(data);
+                }
+            }
+            return data;
+        }
+
+        private void IncrementScore() //Increments the score and rewards more when more filters are applied
+        {
+            if (this.ReverseWordcheckBox.Checked == true && this.RemoveLettercheckBox.Checked == true)
+            {
+                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + (level * 3)).ToString();
+            }
+            else if(this.ReverseWordcheckBox.Checked == true || this.RemoveLettercheckBox.Checked == true)
+            {
+                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + (level * 2)).ToString();
+            }
+            else
+            {
+                IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
             }
         }
     }
