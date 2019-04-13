@@ -87,6 +87,7 @@ namespace WordBlaster
                 Lane5Play(cts[4].Token);
                 InputTextBox.Text = "";
             }
+            this.InputTextBox.Text = "";
             this.checkScore(); //Check to see if it's time to go to the next level
         }
 
@@ -426,6 +427,11 @@ namespace WordBlaster
             {
                 IntScoreLabel.Text = (Convert.ToInt32(this.IntScoreLabel.Text) + level).ToString();
             }
+        }
+
+        private void InputTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

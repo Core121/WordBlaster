@@ -137,6 +137,7 @@
             this.InputTextBox.Size = new System.Drawing.Size(186, 22);
             this.InputTextBox.TabIndex = 7;
             this.InputTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.InputTextBox.TextChanged += new System.EventHandler(this.InputTextBox_TextChanged);
             // 
             // EnterButton
             // 
