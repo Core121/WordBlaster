@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WordBlasterForm));
             this.Lane1Panel = new System.Windows.Forms.Panel();
             this.Lane2Panel = new System.Windows.Forms.Panel();
@@ -43,6 +44,8 @@
             this.StartGamebutton = new System.Windows.Forms.Button();
             this.RemoveLettercheckBox = new System.Windows.Forms.CheckBox();
             this.ReverseWordcheckBox = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.WarningLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lane1Panel
@@ -183,6 +186,22 @@
             this.ReverseWordcheckBox.UseVisualStyleBackColor = true;
             this.ReverseWordcheckBox.CheckedChanged += new System.EventHandler(this.ReverseWordcheckBox_CheckedChanged);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // WarningLabel
+            // 
+            this.WarningLabel.AllowDrop = true;
+            this.WarningLabel.AutoSize = true;
+            this.WarningLabel.Location = new System.Drawing.Point(838, 551);
+            this.WarningLabel.Name = "WarningLabel";
+            this.WarningLabel.Size = new System.Drawing.Size(388, 17);
+            this.WarningLabel.TabIndex = 13;
+            this.WarningLabel.Text = "*If harder game modes are applied, type the ORIGINAL word";
+            // 
             // WordBlasterForm
             // 
             this.AcceptButton = this.EnterButton;
@@ -190,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1226, 661);
+            this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.ReverseWordcheckBox);
             this.Controls.Add(this.RemoveLettercheckBox);
             this.Controls.Add(this.StartGamebutton);
@@ -233,6 +253,8 @@
         private System.Windows.Forms.Button StartGamebutton;
         private System.Windows.Forms.CheckBox RemoveLettercheckBox;
         private System.Windows.Forms.CheckBox ReverseWordcheckBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label WarningLabel;
     }
 }
 
