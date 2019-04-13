@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -299,6 +300,9 @@ namespace WordBlaster
             cts[3] = (new CancellationTokenSource());
             cts[4] = (new CancellationTokenSource());
             observers.Add(new ScoreObserver());
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Music\\WordBlasterMusic.wav";
+            player.PlayLooping();
         }
 
         public async void stopAllTasks() //Stops all the lanes and restarts them

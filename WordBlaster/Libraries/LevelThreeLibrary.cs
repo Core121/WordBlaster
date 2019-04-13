@@ -9,12 +9,11 @@ namespace WordBlaster.Libraries
 {
     class LevelThreeLibrary : LibrariesIF
     {
-        String[] common = { "the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as", "with", "his", "they", "I", "at", "be", "this", "have", "from", "or", "one", "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use", "an", "each", "which", "she", "do", "how", "their", "if", "will", "up", "other", "about", "out", "many", "then", "them", "these", "so", "some", "her", "would", "make", "like", "him", "into", "time", "has", "look", "two", "more", "write", "go", "see", "number", "no", "way", "could", "people", "my", "than", "first", "water", "been", "call", "who", "oil", "its", "now", "find", "long", "down", "day", "did", "get", "come", "made", "may", "part" };
+        String[] common = {"shrink","gossip","battle","broken","carrot","insist","secure","thrust","period","spread","occupy","depend","create","driver","strong","safety","linger","ballet","master","canvas","impact","likely","return","shadow","weapon","basket","ribbon","number","sister","follow","leader","mature","relief","memory","singer","manner","ignore","island","resort","offset","mother","pledge","defend","flower","danger","method","refund","animal","volume","stress","scrape","cheese","finger","frozen","annual","extend","border","wonder","profit","chance","school","pastel","foster","camera","kidnap","shorts","format","twitch","topple","throne","admire","borrow","forbid","rescue","matrix","output","horror","praise","clinic","trance","report","forest","prefer","fossil","poetry","tumble","embark","sailor","member","burial","unique","second","system","bottom","friend","facade","sermon","mosque","stream","answer"};
         public string generateWord()
         {
                 Random random = new Random(Guid.NewGuid().GetHashCode());
                 int i = random.Next(0, common.Length - 1);
-                Console.WriteLine("Value: " + i);
                 return common[i];
         }
     }
