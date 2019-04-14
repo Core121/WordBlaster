@@ -228,6 +228,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1244, 708);
             this.MinimumSize = new System.Drawing.Size(1244, 708);
             this.Name = "WordBlasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
