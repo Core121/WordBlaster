@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\scrabble_hVA_icon.ico" />
+    <Content Include="Music\Blast.wav" />
     <Content Include="Music\WordBlasterMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

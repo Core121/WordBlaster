@@ -400,6 +400,7 @@ namespace WordBlaster
         }
 
 
+
         private string filterProcessor(String data) //Goes through and see if there are any filters in the array, if there are filter out the data
         {
             for(int i = 0; i < filters.Count(); i++)
