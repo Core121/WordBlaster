@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Libraries\CustomLibrary.cs" />
     <Compile Include="AbstractFactory\FactoryProducer.cs" />
     <Compile Include="AbstractFactory\LevelFiveFactory.cs" />
     <Compile Include="AbstractFactory\LevelTwoFactory.cs" />
     <Compile Include="AbstractFactory\LevelFourFactory.cs" />
     <Compile Include="AbstractFactory\LevelThreeFactory.cs" />
     <Compile Include="AbstractFactory\LevelOneFactory.cs" />
+    <Compile Include="Dynamic Linkage\LevelPlayer.cs" />
     <Compile Include="Filter\FilterIF.cs" />
     <Compile Include="Filter\RandomFilter.cs" />
     <Compile Include="Filter\ReverseFilter.cs" />
@@ -110,5 +112,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

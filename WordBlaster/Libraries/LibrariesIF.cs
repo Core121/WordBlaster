@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WordBlaster.Libraries
 {
-    interface LibrariesIF
+    public interface LibrariesIF
     {
         String generateWord();
     }

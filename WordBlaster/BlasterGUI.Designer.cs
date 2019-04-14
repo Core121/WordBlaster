@@ -46,6 +46,7 @@
             this.ReverseWordcheckBox = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.WarningLabel = new System.Windows.Forms.Label();
+            this.LoadLevelbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lane1Panel
@@ -203,6 +204,18 @@
             this.WarningLabel.TabIndex = 13;
             this.WarningLabel.Text = "*If harder game modes are applied, type the ORIGINAL word";
             // 
+            // LoadLevelbutton
+            // 
+            this.LoadLevelbutton.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.LoadLevelbutton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadLevelbutton.Location = new System.Drawing.Point(1081, 28);
+            this.LoadLevelbutton.Name = "LoadLevelbutton";
+            this.LoadLevelbutton.Size = new System.Drawing.Size(115, 28);
+            this.LoadLevelbutton.TabIndex = 14;
+            this.LoadLevelbutton.Text = "Load Level";
+            this.LoadLevelbutton.UseVisualStyleBackColor = false;
+            this.LoadLevelbutton.Click += new System.EventHandler(this.LoadLevelbutton_Click);
+            // 
             // WordBlasterForm
             // 
             this.AcceptButton = this.EnterButton;
@@ -210,6 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1226, 661);
+            this.Controls.Add(this.LoadLevelbutton);
             this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.ReverseWordcheckBox);
             this.Controls.Add(this.RemoveLettercheckBox);
@@ -257,6 +271,7 @@
         private System.Windows.Forms.CheckBox ReverseWordcheckBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label WarningLabel;
+        private System.Windows.Forms.Button LoadLevelbutton;
     }
 }
 

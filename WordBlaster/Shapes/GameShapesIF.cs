@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WordBlaster.Shapes
 {
-    interface GameShapesIF
+    public interface GameShapesIF
     {
         void DrawShape(Graphics g, int x, String word);
 

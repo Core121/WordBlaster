@@ -8,7 +8,7 @@ using WordBlaster.Shapes;
 
 namespace WordBlaster.AbstractFactory
 {
-    interface FactoryIF
+    public interface FactoryIF
     {
         GameShapesIF createShape();
         LibrariesIF createLibrary();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WordBlaster.AbstractFactory;
+using WordBlaster.Dynamic_Linkage;
 using WordBlaster.Filter;
 using WordBlaster.Libraries;
 using WordBlaster.Observer;
@@ -93,6 +95,7 @@ namespace WordBlaster
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
             StartGamebutton.Enabled= false;
+            LoadLevelbutton.Enabled = false;
             RemoveLettercheckBox.Enabled = false;
             ReverseWordcheckBox.Enabled = false;
             this.IntScoreLabel.Text = "0";
@@ -285,6 +288,7 @@ namespace WordBlaster
                 StartGamebutton.Enabled = true;
                 ReverseWordcheckBox.Enabled = true;
                 RemoveLettercheckBox.Enabled = true;
+                LoadLevelbutton.Enabled = true;
             }
         }
 
@@ -427,6 +431,24 @@ namespace WordBlaster
         private void InputTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void LoadLevelbutton_Click(object sender, EventArgs e)
+        {
+            LevelPlayer player = LevelPlayer.getInstance();
+            player.getDynamicFile();
+            StartGamebutton.Enabled = false;
+            LoadLevelbutton.Enabled = false;
+            RemoveLettercheckBox.Enabled = false;
+            ReverseWordcheckBox.Enabled = false;
+            this.IntScoreLabel.Text = "0";
+            NewLevel(6);
+            Lane1Play(cts[0].Token);
+            Lane2Play(cts[1].Token);
+            Lane3Play(cts[2].Token);
+            Lane4Play(cts[3].Token);
+            Lane5Play(cts[4].Token);
+            InputTextBox.Focus();
         }
     }
 }
