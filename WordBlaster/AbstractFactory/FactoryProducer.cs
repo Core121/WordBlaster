@@ -51,8 +51,6 @@ namespace WordBlaster.AbstractFactory
                     //Continue to read until you reach end of file
                     while (line != null)
                     {
-                        //write the line to console window
-                        Console.WriteLine(line);
                         //Read the next line
                         line = sr.ReadLine();
                         code = code + "\n" + line;
