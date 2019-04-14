@@ -49,7 +49,6 @@ namespace WordBlaster
                 IncrementScore();
                 cts[0] = new CancellationTokenSource();
                 Lane1Play(cts.ElementAt(0).Token);
-                InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[1]))
             {
@@ -58,7 +57,6 @@ namespace WordBlaster
                 IncrementScore();
                 cts[1] = new CancellationTokenSource();
                 Lane2Play(cts[1].Token);
-                InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[2]))
             {
@@ -67,7 +65,6 @@ namespace WordBlaster
                 IncrementScore();
                 cts[2] = new CancellationTokenSource();
                 Lane3Play(cts[2].Token);
-                InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[3]))
             {
@@ -76,7 +73,6 @@ namespace WordBlaster
                 IncrementScore();
                 cts[3] = new CancellationTokenSource();
                 Lane4Play(cts[3].Token);
-                InputTextBox.Text = "";
             }
             else if (InputTextBox.Text.Equals(words[4]))
             {
@@ -85,7 +81,6 @@ namespace WordBlaster
                 IncrementScore();
                 cts[4] = new CancellationTokenSource();
                 Lane5Play(cts[4].Token);
-                InputTextBox.Text = "";
             }
             this.InputTextBox.Text = "";
             this.checkScore(); //Check to see if it's time to go to the next level
