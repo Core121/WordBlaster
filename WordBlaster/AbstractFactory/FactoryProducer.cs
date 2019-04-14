@@ -40,7 +40,6 @@ namespace WordBlaster.AbstractFactory
                 {
                     LevelPlayer player = LevelPlayer.getInstance();
                     string dlevel = player.getFile();
-                    Console.WriteLine(dlevel);
                     String code;
                     String line;
                     //Pass the file path and file name to the StreamReader constructor
@@ -86,7 +85,9 @@ namespace WordBlaster.AbstractFactory
                     {
                         compiled =  results.CompiledAssembly;
                     }
-                    Type type = compiled.GetType("WordBlaster.AbstractFactory.LevelSixFactory");
+                    int last = dlevel.LastIndexOf('\\');
+                    last += 1;
+                    Type type = compiled.GetType("WordBlaster.AbstractFactory." + dlevel.Substring(last, (dlevel.Count()-last-4)));
                     FactoryIF dynlvl = (FactoryIF)Activator.CreateInstance(type);
                     return dynlvl;
                 }
