@@ -108,6 +108,7 @@ namespace WordBlaster
             RemoveLettercheckBox.Enabled = false;
             ReverseWordcheckBox.Enabled = false;
             this.IntScoreLabel.Text = "0";
+            this.StopGameButton.Enabled = true;
             NewLevel(1);
             Lane1Play(cts[0].Token);
             Lane2Play(cts[1].Token);
@@ -309,12 +310,13 @@ namespace WordBlaster
             cts[3] = (new CancellationTokenSource());
             cts[4] = (new CancellationTokenSource());
             observers.Add(new ScoreObserver());
+            this.StopGameButton.Enabled = false;
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Music\\WordBlasterMusic.wav";
             player.PlayLooping();
         }
 
-        public async void stopAllTasks() //Stops all the lanes and restarts them
+        public async void stopAllTasks(bool restart) //Stops all the lanes and restarts them
         {
             for(int i = 0; i < cts.Count(); i++)
             {
@@ -325,11 +327,14 @@ namespace WordBlaster
             {
                 cts[i] = new CancellationTokenSource(); //create all new cancellation tokens
             }
-            Lane1Play(cts[0].Token); //restart all lanes
-            Lane2Play(cts[1].Token);
-            Lane3Play(cts[2].Token);
-            Lane4Play(cts[3].Token);
-            Lane5Play(cts[4].Token);
+            if (restart)
+            {
+                Lane1Play(cts[0].Token); //restart all lanes
+                Lane2Play(cts[1].Token);
+                Lane3Play(cts[2].Token);
+                Lane4Play(cts[3].Token);
+                Lane5Play(cts[4].Token);
+            }
         }
 
         public int getLevel() //returns the current level
@@ -464,6 +469,19 @@ namespace WordBlaster
         private void IntScoreLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void StopGameButton_Click(object sender, EventArgs e)
+        {
+            this.stopAllTasks(false);
+            await Task.Delay(2);
+            this.Lane1Panel.Refresh();
+            this.Lane2Panel.Refresh();
+            this.Lane3Panel.Refresh();
+            this.Lane4Panel.Refresh();
+            this.Lane5Panel.Refresh();
+            this.checkIfLost();
+            StopGameButton.Enabled = false;
         }
     }
 }

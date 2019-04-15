@@ -16,19 +16,19 @@ namespace WordBlaster.Observer
             switch (level)
             {
                 case 1:
-                    form.stopAllTasks();
+                    form.stopAllTasks(true);
                     form.NewLevel(2);
                     break;
                 case 2:
-                    form.stopAllTasks();
+                    form.stopAllTasks(true);
                     form.NewLevel(3);
                     break;
                 case 3:
-                    form.stopAllTasks();
+                    form.stopAllTasks(true);
                     form.NewLevel(4);
                     break;
                 case 4:
-                    form.stopAllTasks();
+                    form.stopAllTasks(true);
                     form.NewLevel(5);
                     break;
             }

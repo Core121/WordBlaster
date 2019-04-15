@@ -90,7 +90,7 @@ namespace WordBlaster.AbstractFactory
                     FactoryIF dynlvl = (FactoryIF)Activator.CreateInstance(type);
                     return dynlvl;
                 }
-                catch (System.TypeLoadException e)
+                catch (Exception e)
                 {
                     Console.WriteLine("Could not load file, starting normally...");
                     return new LevelOneFactory(); //if we could not load it in just start normally
