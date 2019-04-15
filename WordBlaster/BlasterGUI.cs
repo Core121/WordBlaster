@@ -44,6 +44,9 @@ namespace WordBlaster
 
         private async void EnterButton_Click(object sender, EventArgs e)
         {
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Music\\Blast.wav";
+
             if (InputTextBox.Text.Equals(words[0]))
             {
                 cts[0].Cancel();
@@ -90,6 +93,12 @@ namespace WordBlaster
 
         private void Lane1Panel_Paint(object sender, PaintEventArgs e)
         {
+            /*
+            Image img = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\Space.jpg");
+            e.Graphics.DrawImage(img, new Point(0, 0));
+            */
+
+            //**WARNING** Only uncomment to garuntee seizures during gameplay
         }
 
         private void StartGamebutton_Click(object sender, EventArgs e)
@@ -450,6 +459,11 @@ namespace WordBlaster
             Lane4Play(cts[3].Token);
             Lane5Play(cts[4].Token);
             InputTextBox.Focus();
+        }
+
+        private void IntScoreLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

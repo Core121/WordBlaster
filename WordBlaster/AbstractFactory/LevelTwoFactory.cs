@@ -19,7 +19,7 @@ namespace WordBlaster.AbstractFactory
 
         public GameShapesIF createShape()
         {
-            var x = Activator.CreateInstance(null, "WordBlaster.Shapes.Square");
+            var x = Activator.CreateInstance(null, "WordBlaster.Shapes.Circle");
             GameShapesIF shape = (GameShapesIF)x.Unwrap();
             return shape;
         }

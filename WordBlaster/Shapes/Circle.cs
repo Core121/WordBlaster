@@ -14,8 +14,21 @@ namespace WordBlaster.Shapes
         {
             // Create a new pen.
             Pen greenPen = new Pen(Color.Green, 1);
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            g.DrawEllipse(greenPen, new Rectangle(x, 0, 75, 75));
+            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            Image img = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\Asteroid.png");
+
+            double y = x / 10;
+            if(y % 4 == 0)
+            {
+                img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            } else if (y % 3 == 0)
+            {
+                img.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            } else if (y % 2 == 0 )
+            {
+                img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
+            g.DrawImage(img, new Point(x, 0));
             g.DrawString(word, font, myBrush, new PointF(x+20, 32));
             // Draw a rectangle.
 
