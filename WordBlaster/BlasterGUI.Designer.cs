@@ -51,7 +51,7 @@
             // 
             // Lane1Panel
             // 
-            this.Lane1Panel.BackColor = System.Drawing.SystemColors.Desktop;
+            this.Lane1Panel.BackColor = System.Drawing.SystemColors.ControlText;
             this.Lane1Panel.Location = new System.Drawing.Point(20, 23);
             this.Lane1Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Lane1Panel.Name = "Lane1Panel";
@@ -61,7 +61,7 @@
             // 
             // Lane2Panel
             // 
-            this.Lane2Panel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Lane2Panel.BackColor = System.Drawing.SystemColors.InfoText;
             this.Lane2Panel.Location = new System.Drawing.Point(20, 106);
             this.Lane2Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Lane2Panel.Name = "Lane2Panel";
@@ -70,7 +70,7 @@
             // 
             // Lane3Panel
             // 
-            this.Lane3Panel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Lane3Panel.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.Lane3Panel.Location = new System.Drawing.Point(20, 190);
             this.Lane3Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Lane3Panel.Name = "Lane3Panel";
@@ -79,7 +79,7 @@
             // 
             // Lane4Panel
             // 
-            this.Lane4Panel.BackColor = System.Drawing.Color.Azure;
+            this.Lane4Panel.BackColor = System.Drawing.SystemColors.InfoText;
             this.Lane4Panel.Location = new System.Drawing.Point(20, 274);
             this.Lane4Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Lane4Panel.Name = "Lane4Panel";
@@ -88,7 +88,7 @@
             // 
             // Lane5Panel
             // 
-            this.Lane5Panel.BackColor = System.Drawing.Color.Honeydew;
+            this.Lane5Panel.BackColor = System.Drawing.SystemColors.InfoText;
             this.Lane5Panel.Location = new System.Drawing.Point(20, 358);
             this.Lane5Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Lane5Panel.Name = "Lane5Panel";
