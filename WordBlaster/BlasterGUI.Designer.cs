@@ -116,7 +116,7 @@
             this.IntScoreLabel.Name = "IntScoreLabel";
             this.IntScoreLabel.Size = new System.Drawing.Size(28, 18);
             this.IntScoreLabel.TabIndex = 4;
-            this.IntScoreLabel.Text = "20";
+            this.IntScoreLabel.Text = "0";
             this.IntScoreLabel.Click += new System.EventHandler(this.IntScoreLabel_Click);
             // 
             // LevelLabel
