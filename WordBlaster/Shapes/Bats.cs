@@ -14,7 +14,7 @@ namespace WordBlaster.Shapes
         {
             // Create a new pen.
             Pen greenPen = new Pen(Color.Green, 1);
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
             Image img;
             img = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "\\Images\\bat1.png");
             img.RotateFlip(RotateFlipType.RotateNoneFlipX);

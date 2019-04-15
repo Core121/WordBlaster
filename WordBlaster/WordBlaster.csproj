@@ -66,7 +66,7 @@
     <Compile Include="Observer\ObserverIF.cs" />
     <Compile Include="Observer\ScoreObserver.cs" />
     <Compile Include="Shapes\Bats.cs" />
-    <Compile Include="Shapes\Circle.cs" />
+    <Compile Include="Shapes\Meteoroid.cs" />
     <Compile Include="Shapes\Diamond.cs" />
     <Compile Include="AbstractFactory\FactoryIF.cs" />
     <Compile Include="Shapes\GameShapesIF.cs" />

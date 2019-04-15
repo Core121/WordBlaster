@@ -14,7 +14,7 @@ namespace WordBlaster.Shapes
         {
             // Create a new pen.
             Pen pen = new Pen(Color.SkyBlue, 1);
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
             g.DrawEllipse(pen, new Rectangle(x, 0, 75, 75));
             g.DrawString(word, font, myBrush, new PointF(x + 20, 32));
             // Draw a rectangle.
