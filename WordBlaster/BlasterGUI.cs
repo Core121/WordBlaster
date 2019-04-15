@@ -299,6 +299,7 @@ namespace WordBlaster
                 ReverseWordcheckBox.Enabled = true;
                 RemoveLettercheckBox.Enabled = true;
                 LoadLevelbutton.Enabled = true;
+                StopGameButton.Enabled = false;
             }
         }
 
@@ -481,7 +482,6 @@ namespace WordBlaster
             this.Lane4Panel.Refresh();
             this.Lane5Panel.Refresh();
             this.checkIfLost();
-            StopGameButton.Enabled = false;
         }
     }
 }
