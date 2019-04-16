@@ -293,7 +293,7 @@ namespace WordBlaster
                     token.ThrowIfCancellationRequested();
                     await Task.Delay(delaytime, token); //Delays the task from happening again for a second
                 }
-                catch (OperationCanceledException e)
+                catch (Exception e)
                 {
                     words[4] = null;
                     break; //break here because task won't end for a while if you exit the application before finishing

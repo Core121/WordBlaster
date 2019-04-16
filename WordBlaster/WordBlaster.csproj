@@ -143,9 +143,6 @@
     <Content Include="Images\Space.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\Blast.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Music\WordBlasterMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
