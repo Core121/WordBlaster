@@ -23,7 +23,7 @@ namespace WordBlaster
     {
         //Will be the same for each lane
         private bool done = false;
-        public int[] chararray = new int[5];
+        public int[] wordarray = new int[5];
         public double charpermin = 0;
         private Scheduler scheduler = new Scheduler();
         private FactoryIF levelFactory;
@@ -53,7 +53,7 @@ namespace WordBlaster
 
             if (InputTextBox.Text.Equals(words[0]))
             {
-                chararray[0] += words[0].Count();
+                wordarray[0] += 1;
                 cts[0].Cancel();
                 await Task.Delay(1); //makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -62,7 +62,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[1]))
             {
-                chararray[1] += words[1].Count();
+                wordarray[1] += 1;
                 cts[1].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -71,7 +71,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[2]))
             {
-                chararray[2] += words[2].Count();
+                wordarray[2] += 1;
                 cts[2].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -80,7 +80,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[3]))
             {
-                chararray[3] += words[3].Count();
+                wordarray[3] += 1;
                 cts[3].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -89,7 +89,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[4]))
             {
-                chararray[4] += words[4].Count();
+                wordarray[4] += 1;
                 cts[4].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();

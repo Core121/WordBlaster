@@ -72,9 +72,9 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
             {
-                    form1.charpermin += (form1.chararray[0] * 60); 
-                    form1.chararray[0] = 0;
-                await Task.Delay(1000); //wait one second
+                await Task.Delay(5000);
+                form1.charpermin += (form1.wordarray[0] * 12); 
+                    form1.wordarray[0] = 0;
             } while (!form1.getDone());
         }
 
@@ -83,9 +83,9 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form; //Thread 2's Task associated with Lane 2
             do
             {
-                    form1.charpermin += (form1.chararray[1] * 60);
-                    form1.chararray[1] = 0;
-                await Task.Delay(1000);
+                await Task.Delay(5000);
+                form1.charpermin += (form1.wordarray[1] * 12);
+                    form1.wordarray[1] = 0;
             } while (!form1.getDone());
         }
 
@@ -95,8 +95,8 @@ namespace WordBlaster
             do
             {
                 await Task.Delay(5000);
-                    form1.charpermin += (form1.chararray[2] * 60);
-                    form1.chararray[2] = 0;
+                    form1.charpermin += (form1.wordarray[2] * 12);
+                    form1.wordarray[2] = 0;
             } while (!form1.getDone());
         }
 
@@ -105,9 +105,9 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
             {
-                await Task.Delay(1000);
-                    form1.charpermin += (form1.chararray[3] * 60);
-                    form1.chararray[3] = 0;
+                await Task.Delay(5000);
+                    form1.charpermin += (form1.wordarray[3] * 12);
+                    form1.wordarray[3] = 0;
             } while (!form1.getDone());
         }
 
@@ -116,9 +116,9 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
             {
-                await Task.Delay(5000);
-                    form1.charpermin += (form1.chararray[4] * 12);
-                    form1.chararray[4] = 0;
+                await Task.Delay(6000);
+                    form1.charpermin += (form1.wordarray[4] * 10);
+                    form1.wordarray[4] = 0;
                 form1.charpermin = 0; //reset number after five seconds
             } while (!form1.getDone());
         }
