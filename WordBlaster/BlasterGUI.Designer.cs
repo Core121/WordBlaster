@@ -271,16 +271,16 @@
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(44, 578);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 16);
+            this.label1.Size = new System.Drawing.Size(84, 16);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Characters/Min:";
+            this.label1.Text = "Words/Min:";
             // 
             // NumCharsPerMinlabel
             // 
             this.NumCharsPerMinlabel.AutoSize = true;
             this.NumCharsPerMinlabel.BackColor = System.Drawing.Color.DarkOrange;
             this.NumCharsPerMinlabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumCharsPerMinlabel.Location = new System.Drawing.Point(165, 578);
+            this.NumCharsPerMinlabel.Location = new System.Drawing.Point(134, 578);
             this.NumCharsPerMinlabel.Name = "NumCharsPerMinlabel";
             this.NumCharsPerMinlabel.Size = new System.Drawing.Size(16, 16);
             this.NumCharsPerMinlabel.TabIndex = 18;
@@ -315,7 +315,7 @@
             this.Controls.Add(this.Lane1Panel);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1242, 705);
             this.MinimumSize = new System.Drawing.Size(1242, 705);
             this.Name = "WordBlasterForm";
