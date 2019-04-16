@@ -48,6 +48,8 @@
             this.WarningLabel = new System.Windows.Forms.Label();
             this.LoadLevelbutton = new System.Windows.Forms.Button();
             this.StopGameButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NumCharsPerMinlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lane1Panel
@@ -239,6 +241,26 @@
             this.StopGameButton.UseVisualStyleBackColor = true;
             this.StopGameButton.Click += new System.EventHandler(this.StopGameButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(44, 578);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 16);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Characters/Min:";
+            // 
+            // NumCharsPerMinlabel
+            // 
+            this.NumCharsPerMinlabel.AutoSize = true;
+            this.NumCharsPerMinlabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumCharsPerMinlabel.Location = new System.Drawing.Point(165, 577);
+            this.NumCharsPerMinlabel.Name = "NumCharsPerMinlabel";
+            this.NumCharsPerMinlabel.Size = new System.Drawing.Size(16, 16);
+            this.NumCharsPerMinlabel.TabIndex = 18;
+            this.NumCharsPerMinlabel.Text = "0";
+            // 
             // WordBlasterForm
             // 
             this.AcceptButton = this.EnterButton;
@@ -246,6 +268,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1225, 660);
+            this.Controls.Add(this.NumCharsPerMinlabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.StopGameButton);
             this.Controls.Add(this.LoadLevelbutton);
             this.Controls.Add(this.WarningLabel);
@@ -265,7 +289,7 @@
             this.Controls.Add(this.Lane1Panel);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1243, 707);
             this.MinimumSize = new System.Drawing.Size(1243, 707);
             this.Name = "WordBlasterForm";
@@ -297,6 +321,8 @@
         private System.Windows.Forms.Label WarningLabel;
         private System.Windows.Forms.Button LoadLevelbutton;
         private System.Windows.Forms.Button StopGameButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label NumCharsPerMinlabel;
     }
 }
 

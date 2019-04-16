@@ -80,6 +80,7 @@
     <Compile Include="Observer\ObservableIF.cs" />
     <Compile Include="Observer\ObserverIF.cs" />
     <Compile Include="Observer\ScoreObserver.cs" />
+    <Compile Include="Scheduler.cs" />
     <Compile Include="Shapes\Bats.cs" />
     <Compile Include="Shapes\Meteoroid.cs" />
     <Compile Include="Shapes\Diamond.cs" />

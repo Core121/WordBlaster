@@ -22,6 +22,10 @@ namespace WordBlaster
     public partial class WordBlasterForm : Form, ObservableIF
     {
         //Will be the same for each lane
+        public bool done = false;
+        public int[] chararray = new int[5];
+        public double charpermin = 0;
+        Scheduler scheduler = new Scheduler();
         private FactoryIF levelFactory;
         private Int32 level;
         private LibrariesIF library;
@@ -49,6 +53,7 @@ namespace WordBlaster
 
             if (InputTextBox.Text.Equals(words[0]))
             {
+                chararray[0] += words[0].Count();
                 cts[0].Cancel();
                 await Task.Delay(1); //makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -57,6 +62,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[1]))
             {
+                chararray[1] += words[1].Count();
                 cts[1].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -65,6 +71,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[2]))
             {
+                chararray[2] += words[2].Count();
                 cts[2].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -73,6 +80,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[3]))
             {
+                chararray[3] += words[3].Count();
                 cts[3].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -81,6 +89,7 @@ namespace WordBlaster
             }
             else if (InputTextBox.Text.Equals(words[4]))
             {
+                chararray[4] += words[4].Count();
                 cts[4].Cancel();
                 await Task.Delay(1);//makes sure the task has time to end before another is started, fixes null word issue
                 IncrementScore();
@@ -103,12 +112,15 @@ namespace WordBlaster
 
         private void StartGamebutton_Click(object sender, EventArgs e)
         {
+            NumCharsPerMinlabel.Text = "0";
             StartGamebutton.Enabled= false;
             LoadLevelbutton.Enabled = false;
             RemoveLettercheckBox.Enabled = false;
             ReverseWordcheckBox.Enabled = false;
             this.IntScoreLabel.Text = "0";
             this.StopGameButton.Enabled = true;
+            this.done = false;
+            this.startThreads();
             NewLevel(1);
             Lane1Play(cts[0].Token);
             Lane2Play(cts[1].Token);
@@ -124,6 +136,10 @@ namespace WordBlaster
             String data = this.filterProcessor(words[0]);
             for (int i = 0; i < 760; i++)
             {
+                if (i % 20 == 0)
+                {
+                    this.updateWords();
+                }
                 try
                 {
                     Lane1Panel.Refresh();
@@ -147,6 +163,7 @@ namespace WordBlaster
                     words[0] = null;
                     this.checkIfLost();
                 }
+                this.updateWords();
             }
         }
 
@@ -156,6 +173,10 @@ namespace WordBlaster
             String data = this.filterProcessor(words[1]);
             for (int i = 0; i < 760; i++)
             {
+                if (i % 20 == 0)
+                {
+                    this.updateWords();
+                }
                 try
                 {
                     Lane2Panel.Refresh();
@@ -188,6 +209,10 @@ namespace WordBlaster
             String data = this.filterProcessor(words[2]);
             for (int i = 0; i < 760; i++)
             {
+                if (i % 20 == 0)
+                {
+                    this.updateWords();
+                }
                 try
                 {
                     Lane3Panel.Refresh();
@@ -220,6 +245,10 @@ namespace WordBlaster
             String data = this.filterProcessor(words[3]);
             for (int i = 0; i < 760; i++)
             {
+                if (i % 20 == 0)
+                {
+                    this.updateWords();
+                }
                 try
                 {
                     Lane4Panel.Refresh();
@@ -252,6 +281,10 @@ namespace WordBlaster
             String data = this.filterProcessor(words[4]);
             for (int i = 0; i < 760; i++)
             {
+                if (i % 20 == 0)
+                {
+                    this.updateWords();
+                }
                 try
                 {
                     Lane5Panel.Refresh();
@@ -300,6 +333,7 @@ namespace WordBlaster
                 RemoveLettercheckBox.Enabled = true;
                 LoadLevelbutton.Enabled = true;
                 StopGameButton.Enabled = false;
+                this.done = false;
             }
         }
 
@@ -458,6 +492,7 @@ namespace WordBlaster
             RemoveLettercheckBox.Enabled = false;
             ReverseWordcheckBox.Enabled = false;
             this.IntScoreLabel.Text = "0";
+            this.startThreads();
             NewLevel(6);
             Lane1Play(cts[0].Token);
             Lane2Play(cts[1].Token);
@@ -482,6 +517,100 @@ namespace WordBlaster
             this.Lane4Panel.Refresh();
             this.Lane5Panel.Refresh();
             this.checkIfLost();
+        }
+
+        public void updateWords()
+        {
+            this.NumCharsPerMinlabel.Text = charpermin.ToString();
+        }
+
+        private void startThreads()
+        {
+            Thread thr1 = new Thread(new ParameterizedThreadStart(scheduler.task1));
+            thr1.Start(this); 
+            try
+            {
+                scheduler.enter(thr1);
+                try
+                {
+                    //...
+                }
+                finally
+                {
+                    scheduler.done();
+                } // try
+            }
+            catch (ThreadInterruptedException t)
+            {
+            } //try
+            Thread thr2 = new Thread(new ParameterizedThreadStart(scheduler.task2));
+            thr2.Start(this);
+            try
+            {
+                scheduler.enter(thr2);
+                try
+                {
+                    //...
+                }
+                finally
+                {
+                    scheduler.done();
+                } // try
+            }
+            catch (ThreadInterruptedException t)
+            {
+            } //try
+            Thread thr3 = new Thread(new ParameterizedThreadStart(scheduler.task3));
+            thr3.Start(this);
+            try
+            {
+                scheduler.enter(thr3);
+                try
+                {
+                    //...
+                }
+                finally
+                {
+                    scheduler.done();
+                } // try
+            }
+            catch (ThreadInterruptedException t)
+            {
+            } //try
+            Thread thr4 = new Thread(new ParameterizedThreadStart(scheduler.task4));
+            thr4.Start(this);
+            try
+            {
+                scheduler.enter(thr4);
+                try
+                {
+                    //...
+                }
+                finally
+                {
+                    scheduler.done();
+                } // try
+            }
+            catch (ThreadInterruptedException t)
+            {
+            } //try
+            Thread thr5 = new Thread(new ParameterizedThreadStart(scheduler.task5));
+            thr5.Start(this);
+            try
+            {
+                scheduler.enter(thr5);
+                try
+                {
+                    //...
+                }
+                finally
+                {
+                    scheduler.done();
+                } // try
+            }
+            catch (ThreadInterruptedException t)
+            {
+            } //try
         }
     }
 }
