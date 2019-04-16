@@ -75,7 +75,7 @@ namespace WordBlaster
                     form1.charpermin += (form1.chararray[0] * 60);
                     form1.chararray[0] = 0;
                 await Task.Delay(1000);
-            } while (!form1.done);
+            } while (!form1.getDone());
         }
 
         public async void task2(Object form)
@@ -86,7 +86,7 @@ namespace WordBlaster
                     form1.charpermin += (form1.chararray[1] * 60);
                     form1.chararray[1] = 0;
                 await Task.Delay(1000);
-            } while (!form1.done);
+            } while (!form1.getDone());
         }
 
         public async void task3(Object form)
@@ -97,7 +97,7 @@ namespace WordBlaster
                 await Task.Delay(5000);
                     form1.charpermin += (form1.chararray[2] * 60);
                     form1.chararray[2] = 0;
-            } while (!form1.done);
+            } while (!form1.getDone());
         }
 
         public async void task4(Object form)
@@ -108,7 +108,7 @@ namespace WordBlaster
                 await Task.Delay(1000);
                     form1.charpermin += (form1.chararray[3] * 60);
                     form1.chararray[3] = 0;
-            } while (!form1.done);
+            } while (!form1.getDone());
         }
 
         public async void task5(Object form)
@@ -120,7 +120,7 @@ namespace WordBlaster
                     form1.charpermin += (form1.chararray[4] * 12);
                     form1.chararray[4] = 0;
                 form1.charpermin = 0;
-            } while (!form1.done);
+            } while (!form1.getDone());
         }
     } // class Scheduler
 }

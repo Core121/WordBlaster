@@ -22,10 +22,10 @@ namespace WordBlaster
     public partial class WordBlasterForm : Form, ObservableIF
     {
         //Will be the same for each lane
-        public bool done = false;
+        private bool done = false;
         public int[] chararray = new int[5];
         public double charpermin = 0;
-        Scheduler scheduler = new Scheduler();
+        private Scheduler scheduler = new Scheduler();
         private FactoryIF levelFactory;
         private Int32 level;
         private LibrariesIF library;
@@ -611,6 +611,16 @@ namespace WordBlaster
             catch (ThreadInterruptedException t)
             {
             } //try
+        }
+
+        public bool getDone()
+        {
+            return done;
+        }
+
+        public double getCharPerMin()
+        {
+            return charpermin;
         }
     }
 }
