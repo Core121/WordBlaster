@@ -72,15 +72,15 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
             {
-                    form1.charpermin += (form1.chararray[0] * 60);
+                    form1.charpermin += (form1.chararray[0] * 60); 
                     form1.chararray[0] = 0;
-                await Task.Delay(1000);
+                await Task.Delay(1000); //wait one second
             } while (!form1.getDone());
         }
 
         public async void task2(Object form)
         {
-            WordBlasterForm form1 = (WordBlasterForm)form;
+            WordBlasterForm form1 = (WordBlasterForm)form; //Thread 2's Task associated with Lane 2
             do
             {
                     form1.charpermin += (form1.chararray[1] * 60);
@@ -91,7 +91,7 @@ namespace WordBlaster
 
         public async void task3(Object form)
         {
-            WordBlasterForm form1 = (WordBlasterForm)form;
+            WordBlasterForm form1 = (WordBlasterForm)form;//Thread 3's Task associated with Lane 3
             do
             {
                 await Task.Delay(5000);
@@ -100,7 +100,7 @@ namespace WordBlaster
             } while (!form1.getDone());
         }
 
-        public async void task4(Object form)
+        public async void task4(Object form)//Thread 4's Task associated with Lane 4
         {
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
@@ -111,7 +111,7 @@ namespace WordBlaster
             } while (!form1.getDone());
         }
 
-        public async void task5(Object form)
+        public async void task5(Object form) //Thread 5's Task associated with Lane 5
         {
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
@@ -119,7 +119,7 @@ namespace WordBlaster
                 await Task.Delay(5000);
                     form1.charpermin += (form1.chararray[4] * 12);
                     form1.chararray[4] = 0;
-                form1.charpermin = 0;
+                form1.charpermin = 0; //reset number after five seconds
             } while (!form1.getDone());
         }
     } // class Scheduler
