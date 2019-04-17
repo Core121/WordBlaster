@@ -487,6 +487,7 @@ namespace WordBlaster
         {
             LevelPlayer player = LevelPlayer.getInstance();
             player.getDynamicFile();
+            this.StopGameButton.Enabled = true;
             StartGamebutton.Enabled = false;
             LoadLevelbutton.Enabled = false;
             RemoveLettercheckBox.Enabled = false;

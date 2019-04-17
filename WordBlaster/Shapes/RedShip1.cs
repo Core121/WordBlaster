@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WordBlaster.Shapes
 {
-    class RedShip1 : GameShapesIF
+    public class RedShip1 : GameShapesIF
     {
         Font font = new Font("Arial", 10, FontStyle.Bold);
         public void DrawShape(Graphics g, int x, String word)
