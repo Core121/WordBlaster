@@ -116,10 +116,10 @@ namespace WordBlaster
             WordBlasterForm form1 = (WordBlasterForm)form;
             do
             {
-                await Task.Delay(6000);
-                    form1.charpermin += (form1.wordarray[4] * 10);
-                    form1.wordarray[4] = 0;
                 form1.charpermin = 0; //reset number after five seconds
+                form1.charpermin += (form1.wordarray[4] * 10);
+                    form1.wordarray[4] = 0;
+                await Task.Delay(6000);
             } while (!form1.getDone());
         }
     } // class Scheduler
